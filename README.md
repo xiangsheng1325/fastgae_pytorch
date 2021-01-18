@@ -20,6 +20,7 @@ This repository implements FastGAE by Guillaume Salha For details of the model, 
 
 * The dataset is the same as what Guillaume provided in his original implementation.
 * Per-epoch training time is a bit slower then the original implementation.
+* Dynamic updates of pos_weight before calculating loss are implemented to improve performance.
 * Train accuracy, validation(test) average precision, auroc are not implemented due to time limit.
 * Dropout is not implemented now.
 * Pair-Normalization is implemented to accelerate the training.
