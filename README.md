@@ -13,6 +13,9 @@ This repository implements FastGAE by Guillaume Salha For details of the model, 
 * Specify your arguments in `args.py` : you can change dataset and other arguments there
 * run `python train_fastgae.py`
 
+# How to run faster and save memory
+* Change your arguments in `args.py` : you can lower the value of `emb_size` and `sample_size` to reduce memory.
+
 # Notes
 
 * The dataset is the same as what Guillaume provided in his original implementation.

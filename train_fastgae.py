@@ -20,24 +20,25 @@ graph = pickle.load(open("./data/{}.graph".format(opt.DATA), "rb"))
 adj = nx.adjacency_matrix(graph)
 adj_float = adj.astype(np.float32)
 adj_def = sp.coo_matrix(adj, dtype=np.float32)
-opt.av_size = adj.shape[0]
+opt.input_size = adj.shape[0]
 opt.gpu = '0'
 os.environ['CUDA_VISIBLE_DEVICES'] = opt.gpu
 opt.emb_size = 256
 opt.lr = 0.01
-opt.max_epochs=200000
+opt.max_epochs=20000
 ##}
 
 # optimization
 dump = False
-pnmode = 'PN-SI'
+modes = ['None', 'PN', 'PN-SI', 'PN-SCS']
+pnmode = modes[0]
 if opt.gpu == '':
     device = 'cpu'
 else:
     device = 'cuda:0'
 
 # fastgae
-G = FastGAE(input_size=opt.av_size, emb_size=opt.emb_size, act=F.relu, mode=pnmode).to(device)
+G = FastGAE(input_size=opt.input_size, emb_size=opt.emb_size, act=F.relu, mode=pnmode).to(device)
 
 opt_gen = optim.Adam(G.parameters(), lr=opt.lr)
 scheduler = StepLR(opt_gen, step_size=400, gamma=0.5)
@@ -118,5 +119,7 @@ for epoch in range(max_epochs):
                         final_emb = G(adj_normalized, sp_feature, device)
                         final_emb = final_emb.to('cpu')
                         rec_adj = torch.mm(final_emb, final_emb.T)
+                        graphs.append(rec_adj.numpy())
                         # todo: memory saving reconstruction
+                    pickle.dump(graphs, open("./graphs/{}.graphs".format(opt.output_name), "wb"))
             break

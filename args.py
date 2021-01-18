@@ -1,14 +1,14 @@
 # Options
 class SimpleOpt:
     def __init__(self):
-        self.av_size = 128
+        self.input_size = 128
         self.emb_size = 128
         self.sample_size = 1024
-        self.max_epochs = 20000
-        self.lr = 0.0001
-        self.gpu = '2'
-        self.DATA = 'guarantee_loan'
-        self.output_name = 'simplehie'
+        self.max_epochs = 2000
+        self.lr = 0.01
+        self.gpu = '0'
+        self.DATA = 'google'
+        self.output_name = 'fastgae-no_pn-relu'
 
 
 # using command-line or type-here
