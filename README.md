@@ -20,6 +20,7 @@ This repository implements FastGAE by Guillaume Salha For details of the model, 
 
 * The dataset is the same as what Guillaume provided in his original implementation.
 * Per-epoch training time is a bit slower then the original implementation.
-* Train accuracy, validation(test) average precision, auroc are eliminated due to time limit.
+* Train accuracy, validation(test) average precision, auroc are not implemented due to time limit.
 * Dropout is not implemented now.
+* Pair-Normalization is implemented to accelerate the training.
 * Feel free to report some inefficiencies in the code! (It's just initial version so may have much room for pytorch-adaptation)
