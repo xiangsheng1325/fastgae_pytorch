@@ -2,10 +2,8 @@
 class SimpleOpt:
     def __init__(self):
         self.av_size = 128
-        self.emb_size = 64
-        self.hidden_size = 128
-        self.pool_size = 128
-        self.output_size = 64
+        self.emb_size = 128
+        self.sample_size = 1024
         self.max_epochs = 20000
         self.lr = 0.0001
         self.gpu = '2'

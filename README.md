@@ -11,7 +11,7 @@ This repository implements FastGAE by Guillaume Salha For details of the model, 
 
 # How to run
 * Specify your arguments in `args.py` : you can change dataset and other arguments there
-* run `python train.py`
+* run `python train_fastgae.py`
 
 # Notes
 
